@@ -1,5 +1,4 @@
-const {emailList,printHobbiesByAge,studentsFromAustralia,detailsAtThree,printAges,firstHobby,detailsOfPerson,printCountryAndCity} = require ("./drill-1-solution");
-
+import {emailList,printHobbiesByAge,studentsFromAustralia,detailsAtThree,printAges,firstHobby,detailsOfPerson,printCountryAndCity} from "./drill-1-solution.js";
 const arrayOfObjects = [
     { 
        id: 1, 

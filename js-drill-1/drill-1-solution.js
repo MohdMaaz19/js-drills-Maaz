@@ -217,4 +217,4 @@ function printCountryAndCity(personList){
     }
 }
 
-module.exports = {emailList,printHobbiesByAge,studentsFromAustralia,detailsAtThree,printAges,firstHobby,detailsOfPerson,printCountryAndCity}
+export {emailList,printHobbiesByAge,studentsFromAustralia,detailsAtThree,printAges,firstHobby,detailsOfPerson,printCountryAndCity}

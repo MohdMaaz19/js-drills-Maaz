@@ -1,6 +1,6 @@
-function interestVideoGames(arr){
+function interestVideoGames(users){
     let userList = [];
-    let userNames = Object.keys(arr);
+    let userNames = Object.keys(users);
 
     for(let i=0; i<userNames.length;i++){
         let userDetails = users[userNames[i]];
@@ -11,35 +11,36 @@ function interestVideoGames(arr){
             userList.push(userNames[i]);
         }
     }
+    console.log(userList);
 }
 
-function stayingInGermany(arr){
+function stayingInGermany(users){
     let userList = [];
-    let userNames = Object.keys(arr);
+    let userNames = Object.keys(users);
 
     for(let i=0; i<userNames.length; i++){
-        let userNationality = arr[userNames[i]].nationality;
+        let userNationality = users[userNames[i]].nationality;
         if(userNationality === "Germany"){
             userList.push(userNames[i]);
         }
     }
 }
 
-function mastersDegree(arr){
+function mastersDegree(users){
     let userList = [];
-    let userNames = Object.keys(arr);
+    let userNames = Object.keys(users);
 
     for(let i=0;i<userNames.length; i++){
-        let userDegree = arr[userNames[i]].qualification;
+        let userDegree = users[userNames[i]].qualification;
         if(userDegree === "Masters"){
             userList.push(userNames[i]);
         }
     }user
 }
 
-function userBasedProgrammingLAnguage(arr){
+function userBasedProgrammingLAnguage(users){
 
-    let userNames = Object.keys(arr);
+    let userNames = Object.keys(users);
 
     let language = ['Python', 'Javascript', 'Golang'];
 
@@ -51,7 +52,7 @@ function userBasedProgrammingLAnguage(arr){
 
     for(let i=0; i<userNames.length;i++){
 
-        let designation = arr[userNames[i]].designation;
+        let designation = users[userNames[i]].designation;
 
         for(let j=0;j<language.length;j++){
 
@@ -67,4 +68,4 @@ function userBasedProgrammingLAnguage(arr){
 }
 
 
-module.exports = {interestVideoGames, stayingInGermany,mastersDegree,userBasedProgrammingLAnguage};
+export {interestVideoGames, stayingInGermany,mastersDegree,userBasedProgrammingLAnguage};
