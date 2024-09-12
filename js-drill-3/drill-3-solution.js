@@ -53,17 +53,20 @@ function everyCarYear(inventory){
     for(let i=0;i<inventory.length;i++){
         carYear.push(inventory[i].car_year);
     }
+    console.log(carYear);
     return carYear;
 }
 
-function olderCar(){
+function olderCar(inventory){
     let olderCar = [];
     let car_list = everyCarYear(inventory);
-    for(let i=0; i<car_list;i++){
+
+    for(let i=0; i<car_list.length;i++){
         if(car_list[i]<2000){
             olderCar.push(car_list[i]);
         }
     } 
+    return olderCar;
 }
 
 function carBmwAudi(inventory){
