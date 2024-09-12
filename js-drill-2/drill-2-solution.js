@@ -24,6 +24,7 @@ function stayingInGermany(users){
             userList.push(userNames[i]);
         }
     }
+    console.log(userList);
 }
 
 function mastersDegree(users){
@@ -35,7 +36,9 @@ function mastersDegree(users){
         if(userDegree === "Masters"){
             userList.push(userNames[i]);
         }
-    }user
+    }
+    console.log(userList);
+
 }
 
 function userBasedProgrammingLAnguage(users){
@@ -58,13 +61,15 @@ function userBasedProgrammingLAnguage(users){
 
             let strToCheck = language[j];
 
-            let regex = new RegExp(strToCheck,i);
+            let regex = new RegExp(strToCheck);
 
             if(designation.match(regex)){
                 usersByLanguages[strToCheck].push(userNames[i]);
             }
         } 
     }
+    console.log(usersByLanguages);
+
 }
 
 
