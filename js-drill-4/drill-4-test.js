@@ -5,11 +5,11 @@ import {
   console.log(
     "-------------------------------Each Function------------------------------"
   )
-  each(items, (num, idx, elements) => (elements[idx] = num * 2))
+  each(items, (num, index, elements) => (elements[index] = num * 2))
   console.log(items)
   
   console.log(
-    "-------------------------------Map Function-------------------------------"
+    "-------------------------------Map Function--------------------------------"
   )
   const myMap = map(items, (x) => x + 2)
   console.log(myMap)
