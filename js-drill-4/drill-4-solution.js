@@ -9,11 +9,11 @@ function each(elements, cb) {
 
 function map(element, cb) {
 
-  let temp = []
+  let solution = []
   for (let i = 0; i < element.length; i++) {
-    temp.push(cb(element[i], i, element))
+    solution.push(cb(element[i], i, element))
   }
-  return temp
+  return solution
 }
 
 function reduce(elements, cb, startingValue) {
@@ -38,24 +38,24 @@ function find(elements, cb) {
 }
 
 function filter(elements, cb) {
-  const temp = []
+  const solution = []
   for (let i = 0; i < elements.length; i++) {
-    if (cb(elements[i], i, elements)) temp.push(elements[i])
+    if (cb(elements[i], i, elements)) solution.push(elements[i])
   }
-  return temp
+  return solution
 }
 
 const nestedArray = [1, [2], [[3]], [[[4]]]] // use this to test 'flatten'
 
 function flatten(elements) {
 
-  let temp = []
+  let solution = []
 
   for (let i = 0; i < elements.length; i++) {
-    if (Array.isArray(elements[i])) temp = temp.concat(flatten(elements[i]))
-    else temp.push(elements[i])
+    if (Array.isArray(elements[i])) solution = solution.concat(flatten(elements[i]))
+    else solution.push(elements[i])
   }
-  return temp
+  return solution
 }
 
 export { items, nestedArray, each, map, reduce, find, filter, flatten }
