@@ -1,7 +1,12 @@
-import {fileModification} from "../problem2.js";
+import { fileModification } from "../problem2.js";
+import path from "path";
+import { fileURLToPath } from "url";
 
-import path from "path"
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
-const inputFilePath = path.join("./inputData", 'lipsum.txt'); 
+// Resolve the input file path for lipsum.txt
+const inputFilePath = path.join(__dirname, "../inputData", 'lipsum.txt');
 
+// Call the fileModification function
 fileModification(inputFilePath);
