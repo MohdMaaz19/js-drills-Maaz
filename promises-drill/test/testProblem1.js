@@ -1,7 +1,11 @@
-import { createAndDeleteFile} from "../problem1.js";
+import { createAndDeleteFiles} from "../problem1.js";
 import path from "path"
+import { fileURLToPath } from "url";
 
-const dirPath = path.join("./output/","randomDirectory");
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
-createAndDeleteFile(dirPath);
+const dirPath = path.join(__dirname, "../output/randomDirectory");
+
+createAndDeleteFiles(dirPath);
 
