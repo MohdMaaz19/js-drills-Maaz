@@ -11,7 +11,7 @@ import path from "path"
 
 function createAndDeleteFile(dirPath){
 
-    fs.mkdir(dirPath,{ recursive:true},(err)=>{
+    fs.mkdir(dirPath,{recursive:true},(err)=>{
         if(err) {
             return console.log(err);
         }
