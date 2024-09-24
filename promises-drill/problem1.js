@@ -8,16 +8,16 @@
 import * as fs from "fs/promises"; // Importing promises version of fs
 import path from "path";
 
-function createAndDeleteFiles() {
-  const dirPath = './output/randomJSONFiles';
+function createAndDeleteFiles(dirPath) {
+  // const dirPath = './output/randomJSONFiles';
   const fileNames = ['file1.json', 'file2.json', 'file3.json']; // Example file names
 
-  // Step 1: Create directory (if not already exists)
+  // Create directory (if not already exists)
   fs.mkdir(dirPath, { recursive: true })
     .then(() => {
       console.log('Directory created:', dirPath);
 
-      // Step 2: Create random JSON files
+      // Create random JSON files
       const createFilesPromises = fileNames.map((fileName) => {
         const filePath = path.join(dirPath, fileName);
         const randomData = { number: Math.floor(Math.random() * 100) }; // Random JSON data
@@ -30,11 +30,11 @@ function createAndDeleteFiles() {
     .then(() => {
       console.log('Files created successfully.');
 
-      // Step 3: Read the directory to get the list of files
+      // Read the directory to get the list of files
       return fs.readdir(dirPath);
     })
     .then((filesInDirectory) => {
-      // Step 4: Delete all files in the directory
+      // Delete all files in the directory
       const deleteFilesPromises = filesInDirectory.map((file) => {
         const filePath = path.join(dirPath, file);
         return fs.unlink(filePath);
@@ -50,9 +50,6 @@ function createAndDeleteFiles() {
       console.error('Error occurred:', error);
     });
 }
-
-// Execute the function
-createAndDeleteFiles();
 
 
 export{createAndDeleteFiles}
