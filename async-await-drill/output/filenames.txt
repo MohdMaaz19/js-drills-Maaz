@@ -1,0 +1,4 @@
+upperCaseFile.txt
+lowerCaseFile.txt
+lowerCaseSentences.txt
+sortedSentences.txt
