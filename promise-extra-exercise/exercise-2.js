@@ -23,15 +23,17 @@ const newPromise = new Promise((resolve,reject)=>{
 })
 console.log(newPromise);
 console.log("Program in progress...");
+
 newPromise
-.then((msg)=>{
-    console.log(msg)
-    const anotherPromise = new Promise((resolve, reject) => {
-    setTimeout(()=>{
-        resolve("Step 2 complete");
-    },3000)
+.then((msg) => {
+    console.log(msg);
+    
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            resolve("Step 2 complete");
+        }, 3000);
+    });
 })
-.then((msg)=>{
-    console.log(msg)
-})
-})
+.then((msg) => { 
+    console.log(msg);
+});
