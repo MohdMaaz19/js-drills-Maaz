@@ -71,50 +71,64 @@
 const {default : fs} = await import ('fs/promises');
 import path from 'path';
 
-function fileModification(){
+function fileModification(inputFilePath){
 
-    return fs. readFile('./inputData/lipsum.txt','utf8')
+    return fs. readFile(inputFilePath,'utf8')
     .then((content)=>{
         const uppercaseContent = content.toUpperCase();
-        const upperCaseFileName = 'upperCaseContent.txt';
+        const upperCaseFileName = './output/upperCaseContent.txt';
         return fs.writeFile(upperCaseFileName,uppercaseContent)
-        .then (()=>fs.writeFile('./fileName.txt',upperCaseFileName+'\n'))
-        .then(()=>uppercaseContent)
     })
-    .then((uppercaseContent)=>{
-        const lowerCaseContent = uppercaseContent.toLowerCase();
-        const lowerCaseFileName = 'lowerCaseContent.txt';
+    .then (()=>fs.writeFile('./output/filenames.txt','upperCaseContent.txt'+'\n'))
+
+    .then(()=>{
+        return fs. readFile(inputFilePath,'utf8')
+    })
+
+    .then((fileContent)=>{
+        const lowerCaseContent = fileContent.toLowerCase();
+        const lowerCaseFileName = './output/lowerCaseContent.txt';
 
         return fs.writeFile(lowerCaseFileName,lowerCaseContent)
-        .then(()=>fs.appendFile('./fileName.txt',lowerCaseFileName+'\n'))
-        .then(()=>{
-            const sentences = lowerCaseContent.match(/[^.?!]+[.?!]/g)
-            .filter(Boolean)
-            .map((sentence)=>sentence.trim())
-            .join('\n')
-
-            return fs.writeFile('./lowerCaseSentences.txt',sentences)
-            .then(()=>fs.appendFile('./fileName.txt','lowerCaseSentences.txt'+'\n'))
-            .then(()=>sentences);
-            // fs.readFile('./lowerCaseSentences.txt','utf8')
-        });
+        .then(()=>lowerCaseContent);
     })
+    .then((lowerCaseContent)=>{
+        return fs.appendFile('./output/filenames.txt','lowerCaseContent.txt'+'\n')
+        .then(()=>lowerCaseContent)
+    })
+    .then((lowerCaseContent)=>{
+        const sentences = lowerCaseContent.match(/[^.?!]+[.?!]/g)
+        .filter(Boolean)
+        .map((sentence)=>sentence.trim())
+        .join('\n')
+
+        return fs.writeFile('./output/lowerCaseSentences.txt',sentences)
+        .then(()=>sentences);
+        // fs.readFile('./lowerCaseSentences.txt','utf8')
+    })
+    .then((sentences)=>{
+        return fs.appendFile('./output/filenames.txt','lowerCaseSentences.txt'+'\n')
+        .then(()=>sentences)
+    })
+
     .then((lowerCaseSentences)=>{
 
         const sortedSentences = lowerCaseSentences.split('\n').sort().join('\n')
-        const sortedFileName = './sortedSentences.txt'
+        const sortedFileName = './output/sortedSentences.txt'
         return fs.writeFile(sortedFileName,sortedSentences)
-        .then(()=>fs.appendFile('./fileName.txt','sortedSentences.txt'+'\n'))
     })
+    .then(()=>fs.appendFile('./output/filenames.txt','sortedSentences.txt'+'\n'))
     .then(()=>{
-        return fs.readFile('./fileName.txt','utf8')
+        return fs.readFile('./output/filenames.txt','utf8')
     })
     .then((fileNames)=>{
         const filesToDelete = fileNames.split('\n').filter(Boolean);
         // console.log(filesToDelete);
-        const createDeletePromise = filesToDelete.map((fileName)=>fs.unlink(fileName))
+        const createDeletePromise = filesToDelete.map((fileName)=>fs.unlink(path.join('./output',fileName)))
         return Promise.all(createDeletePromise);
     })
-    .then(()=>console.log("Alloperation performed!!!"))
+    .then(()=>console.log("All operation performed!!!"))
     .catch((error)=>console.error(error))
 }
+
+export{fileModification}
